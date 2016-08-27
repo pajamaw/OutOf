@@ -1,0 +1,45 @@
+<ion-header-bar class="bar-positive">
+      <h1 class="title">Item</h1>
+      <div class="buttons">
+        <button class="button button-icon ion-compose" ng-click="openItemModal()">
+        </button>
+      </div>
+    </ion-header-bar>
+  <ion-content>
+    <!--<ion-item  type="item-text-wrap">
+      <button class="button button-icon" ng-click="openItemModal()">
+        <i class="icon ion-compose"></i>
+      </button>
+    </ion-item>-->
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in items" type="item-text-wrap" href="#/tab/items/{{item.id}}">
+        <img ng-src="{{item.face}}">
+        <h2>{{item.title}}</h2>
+
+        <a class="tab-item assertive" ng-click="removeItem(item)">
+          <i class= "icon ion-android-close"></i>
+        </a>
+      </ion-item>
+
+  </ion-content>
+</ion-view>
+
+<script id="new-item-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-dark">
+      <h1 class="title">What are you out of?</h1>
+      <button class="button button-icon" ng-click="closeItemModal()">
+        <i class="icon ion-android-close"></i>
+      </button>
+    </ion-header-bar>
+    <ion-content>
+      <form ng-submit="createItem(item)">
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input ng-model="item.title" type="text" placeholder="Item title">
+          </label>
+        <button type="submit" class="button button-block button-positive">Add Item</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
+</script>
