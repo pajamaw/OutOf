@@ -4,7 +4,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('outof', ['ionic', 'LocalStorageModule'])
+var app = angular.module('outof', ['ionic', 'LocalStorageModule', 'ngCordova'])
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,12 +38,12 @@ app.run(function($ionicPlatform) {
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.contacts', {
+    url: '/contacts',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-contacts': {
+        templateUrl: 'templates/tab-contacts.html',
+        controller: 'ContactsCtrl'
       }
     }
   })
@@ -67,12 +67,12 @@ app.run(function($ionicPlatform) {
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.message', {
+    url: '/message',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-message': {
+        templateUrl: 'templates/tab-message.html',
+        controller: 'MessageCtrl'
       }
     }
   });

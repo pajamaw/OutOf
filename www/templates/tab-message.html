@@ -4,10 +4,7 @@
     </ion-header-bar>
 <ion-view view-title="Text Em!">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <textarea id="messageTxt" placeholder="Enter message"></textarea>
+  <input type="button" onclick="sendSms()" value="Send SMS" />
   </ion-content>
 </ion-view>

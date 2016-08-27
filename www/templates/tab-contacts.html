@@ -1,0 +1,26 @@
+<ion-header-bar class="bar-positive">
+      <h1 class="title">Tell Who?</h1>
+    </ion-header-bar><ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <div class="padding">
+      <button class="button" ng-click="getContacts()">Get My Contacts</button>
+      <div class="list" ng-show="phoneContacts">
+        <div class="card" ng-repeat="contact in phoneContacts">
+          <div class="item item-divider">
+            {{ contact.name.formatted }}
+          </div>
+          <div class="item item-text-wrap">
+            <p><strong>Phone(s)</strong></p>
+            <div ng-repeat="number in contact.phoneNumbers">
+              <p>{{ number.value }}</p>
+            </div>
+            <p><strong>Email(s)</strong></p>
+            <div ng-repeat="email in contact.emails">
+              <p>{{ email.value }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
