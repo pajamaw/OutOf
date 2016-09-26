@@ -24,6 +24,9 @@ app.controller('ItemsCtrl', function($scope, Items, $ionicModal, localStorageSer
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+$scope.$on('$ionicView.enter', function(e){
+  console.log(e )
+})
 $scope.items = Items.all();
 $scope.item = {};
 $ionicModal.fromTemplateUrl('new-item-modal.html', {
@@ -60,12 +63,17 @@ app.controller('ItemDetailsCtrl', function($scope, $stateParams, Items) {
 })
 
 app.controller('MessageCtrl', function($scope, $cordovaSms) {
+  //$scope.sms = {
+//    number: '0959052082',
+//    message: 'This is some dummy text'
+//  };
   $scope.sms = {
-    number: '0959052082',
-    message: 'This is some dummy text'
+    number: '7277447851',
+    message: 'hmmm'
   };
 
   document.addEventListener("deviceready", function() {
+
 
     var options = {
       replaceLineBreaks: false, // true to replace \n by a new line, false by default
@@ -78,15 +86,22 @@ app.controller('MessageCtrl', function($scope, $cordovaSms) {
 
     $scope.sendSMS = function() {
 
+      console.log($scope.sms.number);
+      console.log($scope.sms.message);
+
       $cordovaSms
-        .send('6075929358', 'This is some dummy text', options)
+        .send($scope.sms.number, $scope.sms.message, options)
         .then(function() {
           alert('Success');
           // Success! SMS was sent
+          console.log('Success')
         }, function(error) {
           alert('Error');
+          console.log(error);
           // An error occurred
         });
     }
   });
+});
+app.controller('HomeCtrl', function($scope) {
 });

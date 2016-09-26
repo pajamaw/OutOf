@@ -6,10 +6,11 @@
 // 'starter.controllers' is found in controllers.js
 var app = angular.module('outof', ['ionic', 'LocalStorageModule', 'ngCordova'])
 
-app.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $location, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+  //  window.device = {platform : "ios"};
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -19,17 +20,24 @@ app.run(function($ionicPlatform) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    $location.path('/tab/contacts')
+    $rootScope.$apply();
   });
 })
-.config(function (localStorageServiceProvider) {
-    localStorageServiceProvider
-      .setPrefix('outof');
-  })
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
 
   // setup an abstract state for the tabs directive
+
+    .state('home', {
+      url: '/home',
+      templateUrl: 'templates/loading.html',
+      controller: 'HomeCtrl'
+    })
+
     .state('tab', {
     url: '/tab',
     abstract: true,
@@ -76,8 +84,14 @@ app.run(function($ionicPlatform) {
       }
     }
   });
-
+//  $timeout(function(){
+//    $state.go('tab.items');
+//  }, 5000)
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/items');
+  $urlRouterProvider.otherwise('/home');
 
-});
+})
+.config(function (localStorageServiceProvider) {
+    localStorageServiceProvider
+      .setPrefix('outof');
+  })
